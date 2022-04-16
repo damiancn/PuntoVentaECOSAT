@@ -97,7 +97,6 @@ export class VentaComponent implements OnInit {
         map(value => this.filtrarPrd(value))
       );
     }).catch(e => {
-      console.log(e);
     });
   }
   private filtrarPrd(value: string): Producto[] {
@@ -111,11 +110,13 @@ export class VentaComponent implements OnInit {
   //   this.cargarProductos();
   // }
 
-  productosSeleccionado(modelo: Producto) {
-    this.f['productoDescripcion'].setValue(modelo.descripcion);
+  productosSeleccionado(modelo: Producto,event:any) {
+    if(event.isUserInput){
+      this.f['productoDescripcion'].setValue(modelo.descripcion);
     this.f['productoId'].setValue(modelo.id);
     this.precioPrdto = modelo.precio;
-    console.log(modelo);
+    }
+    
   }
 
   cerrar() {
