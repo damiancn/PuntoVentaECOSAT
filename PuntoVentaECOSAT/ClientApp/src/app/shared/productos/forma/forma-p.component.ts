@@ -39,6 +39,7 @@ export class FormaPComponent implements OnInit {
             descripcion:this.model.departamentoDescripcion,
             id:this.model.departamentoId
           };
+          this.controlDpto.setValue(this.model.departamentoDescripcion)
           console.log(dpto);
           this.dptoSeleccionada(dpto);
           Object.assign(this.forma.value, this.model);
@@ -91,6 +92,9 @@ export class FormaPComponent implements OnInit {
     return this.listadoDpto.filter(options => options.descripcion.toLowerCase().includes(valorFiltro));
   }
 
+  cerrar(){
+    this.ventana.close()
+  }
   guardar() {
 
     const model=this.forma.value as Producto;

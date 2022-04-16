@@ -1,7 +1,7 @@
-<mat-toolbar class="tituloModal">
+<mat-toolbar class="tituloModal" fxLayout="row" fxLayoutAlign="space-between center">
     <h2>Producto</h2>
     <div>
-      <button mat-icon-button mat-dialog-close>
+      <button mat-icon-button (click)="cerrar()">
         <mat-icon>close</mat-icon>
       </button>
     </div>
@@ -44,7 +44,7 @@
         <mat-icon>save</mat-icon>
         Guardar
       </button>
-      <button mat-raised-button color="secundary">
+      <button mat-raised-button color="secundary" (click)="cerrar()">
         <mat-icon>close</mat-icon>
         Cerrar
       </button>

@@ -75,10 +75,12 @@ export class VentaComponent implements OnInit {
         } else {
           this.totalVenta -=  lista.cantidad * this.precioPrdto;
           lista.cantidad = (+modelo.cantidad + +lista.cantidad);
-  
           lista.importe = lista.cantidad * this.precioPrdto;
           this.totalVenta += lista.importe;
+
         }
+        this.controlPrdto.setValue('');
+        this.f['cantidad'].setValue(0);
   
       } else {
         alert('Ingrese una cantidad valida');
@@ -113,7 +115,7 @@ export class VentaComponent implements OnInit {
     this.f['productoDescripcion'].setValue(modelo.descripcion);
     this.f['productoId'].setValue(modelo.id);
     this.precioPrdto = modelo.precio;
-
+    console.log(modelo);
   }
 
   cerrar() {
