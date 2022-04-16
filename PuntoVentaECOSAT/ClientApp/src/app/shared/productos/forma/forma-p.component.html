@@ -1,0 +1,53 @@
+<mat-toolbar class="tituloModal">
+    <h2>Producto</h2>
+    <div>
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="forma" id="formularioUsuario" (submit)="guardar()">
+        <div fxLayout="row" fxLayoutGap="15px">
+          <mat-form-field frxFlex="auto" appearance="legacy">
+            <mat-label>Nombre producto</mat-label>
+            <input matInput formControlName="descripcion">
+            <mat-error>
+              *Campo obligatorio
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="legacy">
+            <mat-label>Precio</mat-label>
+            <mat-icon matPrefix>attach_money</mat-icon>
+            <input matInput formControlName="precio" type="number">
+            <mat-error>
+              *Campo obligatorio
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <input type="text" placeholder="Seleccione una departamento" matInput [formControl]="controlDpto" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filtroDpto|async" [value]="option.descripcion" (onSelectionChange)="dptoSeleccionada(option)">
+                {{option.descripcion}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </form>
+  
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="15px">
+      <button mat-raised-button color="primary" form="formularioUsuario" type="submit">
+        <mat-icon>save</mat-icon>
+        Guardar
+      </button>
+      <button mat-raised-button color="secundary">
+        <mat-icon>close</mat-icon>
+        Cerrar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  

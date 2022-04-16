@@ -1,0 +1,28 @@
+<mat-toolbar>
+    <h2>Detalle venta</h2>
+    <div>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+<mat-card>
+    <mat-card-header>
+
+    </mat-card-header>
+    <mat-card-content>
+
+        <mat-list>
+            <mat-list-item *ngFor="let item of list">
+                <div matLine>{{item.productoDescripcion}}, {{item.cantidad}}, ${{item.importe}}</div>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="15px">
+
+        <button mat-raised-button color="secundary">
+            <mat-icon>close</mat-icon>
+            Cerrar
+        </button>
+    </mat-card-actions>
+</mat-card>

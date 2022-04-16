@@ -1,0 +1,31 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+
+}
+.ecoimg{
+  max-width: 10%;
+  max-height:10%;
+}
+.navbar{
+  background-color: rgba(29, 144, 221, 0.822);
+  color: white;
+
+}
+.nav-item{
+  color: white;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgb(65, 124, 163);
+}

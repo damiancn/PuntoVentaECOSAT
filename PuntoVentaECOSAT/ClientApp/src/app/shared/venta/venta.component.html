@@ -1,0 +1,68 @@
+<div style="padding: 1%;">
+    <mat-toolbar  class="toolbarCatalogo" fxLayout="row" fxLayoutAlign="space-between center">
+        <h1 mat-h2>Carrito de Compra</h1>
+        <button mat-icon-button matTooltip="Cerrar" class="col-md-1">
+            <mat-icon class="fuente">clear</mat-icon>
+        </button>
+    </mat-toolbar>
+    
+    <div class="tcolor" fxLayout="row" fxLayoutGap="15px">
+        <div fxFlex="30">
+            <form [formGroup]="forma" id="formaProducto" (submit)="guardar()" fxLayout="column" fxLayoutGap="15px">
+    
+                <mat-form-field appearance="legacy" fxFlex="auto">
+                    <input type="text" placeholder="Seleccione una Producto" matInput [formControl]="controlPrdto" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let option of filtroPrdto|async" [value]="option.descripcion" (onSelectionChange)="productosSeleccionado(option)">
+                        {{option.descripcion}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+    
+                <mat-form-field appearance="legacy" fxFlex="auto">
+                    <input matInput placeholder="Ingrese Cantidad" formControlName="cantidad" type="number">
+                </mat-form-field>
+                <div fxFlex="auto" fxLayoutAlign="end center">
+                    <button mat-raised-button color="primary"  (click)="agregarLista()" type="button">
+                        <mat-icon>add</mat-icon> Agregar
+                    </button>
+                </div>
+               
+            </form>
+    
+        </div>
+        <div fxFlex="70">
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <td>Producto</td>
+                        <td>Cantidad</td>
+                        <td>Precio</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listaSubVenta">
+                        <td>{{item.productoDescripcion}}</td>
+                        <td>{{item.cantidad}} <button mat-button (click)="removerProducto(item)"><mat-icon>remove</mat-icon></button></td>
+                        <td>{{item.importe}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Total</td>
+                        <td colspan="1">${{totalVenta}}</td>
+                    </tr>
+    
+                </tfoot>
+    
+            </table>
+        </div>
+    
+    </div>
+    
+    
+    <div align="end" class="col-md-12" style="margin-top: 2%;">
+        <button mat-raised-button color="secundary" style="margin-right:1%;" (click)="cerrar()">Cerrar</button>
+        <button mat-raised-button color="primary" #formaProducto (click)="guardar()">Guardar</button>
+    </div>
+</div>
